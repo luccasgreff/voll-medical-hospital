@@ -1,0 +1,1 @@
+alter table consultas drop constraint CONSTRAINT_8;

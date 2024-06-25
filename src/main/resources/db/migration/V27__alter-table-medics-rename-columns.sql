@@ -1,0 +1,13 @@
+alter table medics rename column nome to name;
+alter table medics rename column telefone to phone;
+alter table medics rename column especialidade to specialty;
+alter table medics rename column logradouro to street;
+alter table medics rename column bairro to district;
+alter table medics rename column cep to zip_code;
+alter table medics rename column cidade to city;
+alter table medics rename column uf to state;
+alter table medics rename column numero to number;
+alter table medics rename column complemento to complement;
+alter table medics rename column ativo to active;
+alter table medics rename column criacao to created_at;
+alter table medics rename column modificacao to modified_at;
