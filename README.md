@@ -4,7 +4,7 @@ Project created studying through Alura Education classes, in Java & Spring Boot 
 
 ## Description
 
-Rest API responsible for the back-end processes of a fictional hospital. Registering, consulting, updating & delet3ing data from medics, patients & appointments.
+Rest API responsible for the back-end processes of a fictional hospital. Registering, consulting, updating & deleting data from medics, patients & appointments.
 
 ## Technologies
 
