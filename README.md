@@ -46,7 +46,7 @@ Rest API responsible for the back-end processes of a fictional hospital. Registe
 
 - Medic CRM is the brazilian medic ID;
 - Phone number should have 11 digits (brazilian format) or 10 digits (north american format);
-- Patient SSN (Social Security Number) is equivalent to brazilian CPF (can be written in both formats);
+- Patient SSN (Social Security Number) is equivalent to brazilian "CPF" (can be written in both formats);
 - Address district is equivalent to brazilian "bairro";
 - Address state is equivalent to brazilian "UF";
 - Address zip code is equivalent to brazilian "CEP" (can be written in brazilian format, regular U.S format & U.S ZIP+4 code);
