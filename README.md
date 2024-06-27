@@ -49,7 +49,7 @@ Rest API responsible for the back-end processes of a fictional hospital. Registe
 - Patient SSN (Social Security Number) is equivalent to brazilian "CPF" (can be written in both formats);
 - Address district is equivalent to brazilian "bairro";
 - Address state is equivalent to brazilian "UF";
-- Address zip code is equivalent to brazilian "CEP" (can be written in brazilian format, regular U.S ZIP format & U.S ZIP+4 code);
+- Address zip code is equivalent to brazilian "CEP" (can be written in brazilian format, regular U.S ZIP format & U.S ZIP+4 code format);
 
 
 
