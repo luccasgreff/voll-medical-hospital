@@ -22,7 +22,7 @@ public class SavePatientDTO {
     private String email;
 
     @NotBlank(message = "{field.blank}")
-    @Pattern(regexp = "\\d{11}", message = "{field.pattern}")
+    @Pattern(regexp = "(\\d{11})|(\\d{10})", message = "{field.pattern}")
     private String phone;
 
     @NotBlank(message = "{field.blank}")

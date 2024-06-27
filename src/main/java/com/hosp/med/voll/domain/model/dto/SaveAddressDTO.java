@@ -22,7 +22,7 @@ public class SaveAddressDTO {
     private String district;
 
     @NotBlank(message = "{field.blank}")
-    @Pattern(regexp = "([0-9]{5}[-]?[0-9]{3})", message = "{field.pattern}")
+    @Pattern(regexp = "([0-9]{5}[-]?[0-9]{3})|([0-9]{5}[-]?[0-9]{4})|(\\d{5})", message = "{field.pattern}")
     private String zipCode;
 
     @NotNull(message = "{field.null}")
@@ -30,7 +30,7 @@ public class SaveAddressDTO {
     private String city;
 
     @NotBlank(message = "{field.blank}")
-    @Size(max = 2, message = "{field.size}")
+    @Size(max = 15, message = "{field.size}")
     private String state;
 
     @NotBlank(message = "{field.blank}")
