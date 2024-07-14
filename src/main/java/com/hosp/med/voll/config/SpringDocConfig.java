@@ -19,7 +19,7 @@ public class SpringDocConfig {
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
                 .info(new Info()
                         .title("Voll.med")
-                        .description("Aplicação responsável pelo banco de dados do Hospital Fictício Voll.")
+                        .description("Application responsible for the database of the fictional Voll Hospital.")
                         .contact(new Contact()
                                 .name("Luccas Greff")
                                 .email("luccasgreffprofissional@gmail.com")));
