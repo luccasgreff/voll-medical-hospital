@@ -18,8 +18,8 @@ public class SpringDocConfig {
                         .addSecuritySchemes("bearer-key",
                                 new SecurityScheme().type(SecurityScheme.Type.HTTP).scheme("bearer").bearerFormat("JWT")))
                 .info(new Info()
-                        .title("Voll.med")
-                        .description("Application responsible for the database of the fictional Voll Hospital.")
+                        .title("Voll Medical Hospital")
+                        .description("Documentation of the application responsible for the database of the fictional Voll Hospital.")
                         .contact(new Contact()
                                 .name("Luccas Greff")
                                 .email("luccasgreffprofissional@gmail.com")));
