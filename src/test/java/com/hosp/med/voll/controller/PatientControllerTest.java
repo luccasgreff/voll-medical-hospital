@@ -3,7 +3,7 @@ package com.hosp.med.voll.controller;
 import com.hosp.med.voll.domain.model.PatientEntity;
 import com.hosp.med.voll.domain.model.dto.*;
 import com.hosp.med.voll.handler.exception.UnactiveException;
-import com.hosp.med.voll.mapper.impl.AddressMapperImpl;
+import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.repository.PatientRepository;
 import com.hosp.med.voll.service.PatientService;
 import org.junit.jupiter.api.Test;
@@ -44,7 +44,7 @@ class PatientControllerTest {
     private PatientRepository repository;
 
     @Autowired
-    private AddressMapperImpl addressMapper;
+    private AddressMapper addressMapper;
 
     @Autowired
     private JacksonTester<SavePatientDTO> patientJsonRequest;

@@ -3,8 +3,8 @@ package com.hosp.med.voll.service;
 import com.hosp.med.voll.domain.model.PatientEntity;
 import com.hosp.med.voll.domain.model.dto.*;
 import com.hosp.med.voll.handler.exception.UnactiveException;
-import com.hosp.med.voll.mapper.impl.AddressMapperImpl;
-import com.hosp.med.voll.mapper.impl.PatientMapperImpl;
+import com.hosp.med.voll.mapper.AddressMapper;
+import com.hosp.med.voll.mapper.PatientMapper;;
 import com.hosp.med.voll.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +18,10 @@ public class PatientService {
     private PatientRepository repository;
 
     @Autowired
-    private PatientMapperImpl mapper;
+    private PatientMapper mapper;
 
     @Autowired
-    private AddressMapperImpl addressMapper;
+    private AddressMapper addressMapper;
 
     public SavePatientResponseDTO savePatient(SavePatientDTO body) {
 
@@ -35,7 +35,9 @@ public class PatientService {
     public Page<GetPatientDTO> listPatients(Pageable pagination) {
 
         Page<PatientEntity> patients = repository.findAllByActiveTrue(pagination);
-        return mapper.pageToResponseDTO(patients, pagination);
+        Page<GetPatientDTO> patientsPageDTO = patients.map(mapper::entityToGetResponseDTO);
+
+        return patientsPageDTO;
     }
 
     public GetPatientDTO queryPatientById(Integer id) {

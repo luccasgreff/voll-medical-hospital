@@ -2,7 +2,7 @@ package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.AppointmentEntity;
 import com.hosp.med.voll.domain.model.dto.*;
-import com.hosp.med.voll.mapper.impl.AppointmentMapperImpl;
+import com.hosp.med.voll.mapper.AppointmentMapper;
 import com.hosp.med.voll.repository.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,7 +16,7 @@ public class AppointmentService {
     private AppointmentRepository repository;
 
     @Autowired
-    private AppointmentMapperImpl mapper;
+    private AppointmentMapper mapper;
 
     public SaveAppointmentResponseDTO saveAppointment(SaveAppointmentDTO body) {
 
@@ -30,7 +30,9 @@ public class AppointmentService {
     public Page<GetAppointmentDTO> listAppointments(Pageable pagination) {
 
         Page<AppointmentEntity> appointments = repository.findAll(pagination);
-        return mapper.pageToResponseDTO(appointments, pagination);
+        Page<GetAppointmentDTO> appointmentsPageDTO = appointments.map(mapper::entityToGetResponseDTO);
+
+        return appointmentsPageDTO;
     }
 
     public GetAppointmentDTO queryAppointmentById(Integer id) {

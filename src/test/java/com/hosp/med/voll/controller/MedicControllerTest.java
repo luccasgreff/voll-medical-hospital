@@ -4,7 +4,7 @@ import com.hosp.med.voll.domain.enums.SpecialtysEnum;
 import com.hosp.med.voll.domain.model.MedicEntity;
 import com.hosp.med.voll.domain.model.dto.*;
 import com.hosp.med.voll.handler.exception.UnactiveException;
-import com.hosp.med.voll.mapper.impl.AddressMapperImpl;
+import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.repository.MedicRepository;
 import com.hosp.med.voll.service.MedicService;
 import org.junit.jupiter.api.Test;
@@ -45,7 +45,7 @@ class MedicControllerTest {
     private MedicRepository repository;
 
     @Autowired
-    private AddressMapperImpl addressMapper;
+    private AddressMapper addressMapper;
 
     @Autowired
     private JacksonTester<SaveMedicDTO> medicJsonRequest;
