@@ -3,7 +3,7 @@ package com.hosp.med.voll.service;
 import com.hosp.med.voll.domain.model.UserEntity;
 import com.hosp.med.voll.domain.model.dto.AuthenticationDTO;
 import com.hosp.med.voll.domain.model.dto.AuthenticationResponseDTO;
-import com.hosp.med.voll.mapper.impl.AuthenticationMapperImpl;
+import com.hosp.med.voll.mapper.AuthenticationMapper;
 import com.hosp.med.voll.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -23,7 +23,7 @@ public class AuthenticationService implements UserDetailsService {
     @Autowired
     private AuthenticationConfiguration configuration;
     @Autowired
-    private AuthenticationMapperImpl mapper;
+    private AuthenticationMapper mapper;
 
 
     public AuthenticationResponseDTO generateToken(AuthenticationDTO body) throws Exception {

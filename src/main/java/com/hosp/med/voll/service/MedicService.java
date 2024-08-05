@@ -3,8 +3,8 @@ package com.hosp.med.voll.service;
 import com.hosp.med.voll.domain.model.MedicEntity;
 import com.hosp.med.voll.domain.model.dto.*;
 import com.hosp.med.voll.handler.exception.UnactiveException;
-import com.hosp.med.voll.mapper.impl.AddressMapperImpl;
-import com.hosp.med.voll.mapper.impl.MedicMapperImpl;
+import com.hosp.med.voll.mapper.AddressMapper;
+import com.hosp.med.voll.mapper.MedicMapper;
 import com.hosp.med.voll.repository.MedicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,16 +16,15 @@ public class MedicService {
 
     @Autowired
     private MedicRepository repository;
-
     @Autowired
-    private MedicMapperImpl mapper;
-
+    private MedicMapper mapper;
     @Autowired
-    private AddressMapperImpl addressMapper;
+    private AddressMapper addressMapper;
+
 
     public SaveMedicResponseDTO saveMedic(SaveMedicDTO body) {
 
-        var medic = mapper.postBodyToEntity(body);
+        var medic = mapper.postRequestDTOToEntity(body);
 
         repository.save(medic);
 
@@ -35,7 +34,9 @@ public class MedicService {
     public Page<GetMedicDTO> listMedics(Pageable pagination) {
 
         Page<MedicEntity> medics = repository.findAllByActiveTrue(pagination);
-        return mapper.pageToResponseDTO(medics, pagination);
+        Page<GetMedicDTO> medicsPageDTO = medics.map(mapper::entityToGetResponseDTO);
+
+        return medicsPageDTO;
     }
 
     public GetMedicDTO queryMedicById(Integer id) {
