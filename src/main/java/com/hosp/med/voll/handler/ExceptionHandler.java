@@ -9,12 +9,10 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 
 @RestControllerAdvice
 @Slf4j
@@ -63,15 +61,14 @@ public class ExceptionHandler {
         }
 
         log.error("Bad Request due to: {}", fieldErrorsForLog);
-        log.error(errors.get(1).getRejectedValue().toString());
         return ResponseEntity.badRequest().body(response);
     }
 
     @org.springframework.web.bind.annotation.ExceptionHandler(DataIntegrityViolationException.class)
-    public ResponseEntity handleUniqueIndexData(DataIntegrityViolationException exception) {
+    public ResponseEntity handleDataIntegrityViolation(DataIntegrityViolationException exception) {
 
         ErrorDTO error = new ErrorDTO();
-        error.setMessage("The Request content violates data integrity, such as repeated or unique data .");
+        error.setMessage("The request content violates data integrity, such as unique data or data size.");
 
         log.error("Data integrity violated: {Message: {}}", exception.getMessage());
 

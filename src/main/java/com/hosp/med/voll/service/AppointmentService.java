@@ -62,7 +62,7 @@ public class AppointmentService {
         }
         if (body.getTime() != null && !body.getTime().equals(appointmentRecord.getTime())) {
             appointmentRecord.setTime(body.getTime());
-            logForUpdatedData += "time: " + body.getTime();
+            logForUpdatedData += "time: " + body.getTime() + "}";
         }
 
         repository.save(appointmentRecord);
