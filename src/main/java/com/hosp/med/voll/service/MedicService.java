@@ -2,11 +2,12 @@ package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.MedicEntity;
 import com.hosp.med.voll.domain.model.dto.*;
-import com.hosp.med.voll.handler.exception.UnactiveException;
+import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.mapper.MedicMapper;
 import com.hosp.med.voll.repository.MedicRepository;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -69,18 +70,35 @@ public class MedicService {
             medicRecord.setName(body.getName());
             logForUpdatedData += "name: " + body.getName();
         }
+
         if (body.getPhone() != null && !body.getPhone().equals(medicRecord.getPhone())) {
             medicRecord.setPhone(body.getPhone());
-            logForUpdatedData += ", phone: " + body.getPhone();
+
+
+            if (logForUpdatedData.contains("name")) {
+
+                logForUpdatedData += ", ";
+            }
+
+            logForUpdatedData += "phone: " + body.getPhone();
+
         }
+
         if (body.getAddress() != null) {
             medicRecord.setAddress(addressMapper.addressDtoToModel(body.getAddress()));
-            logForUpdatedData += ", address: ****}";
+
+
+            if (logForUpdatedData.contains("name") || logForUpdatedData.contains("phone")) {
+
+                logForUpdatedData += ", ";
+            }
+
+            logForUpdatedData += "address: ****";
         }
 
         repository.save(medicRecord);
 
-        log.info(logForUpdatedData);
+        log.info(logForUpdatedData + "}");
 
         return mapper.entityToPutResponseDTO(medicRecord);
     }

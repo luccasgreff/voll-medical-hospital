@@ -1,7 +1,7 @@
 package com.hosp.med.voll.controller;
 
 import com.hosp.med.voll.domain.model.dto.*;
-import com.hosp.med.voll.handler.exception.UnactiveException;
+import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.service.PatientService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;

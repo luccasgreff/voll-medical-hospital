@@ -58,16 +58,25 @@ public class AppointmentService {
 
         if (body.getDate() != null && !body.getDate().equals(appointmentRecord.getDate())) {
             appointmentRecord.setDate(body.getDate());
+
             logForUpdatedData += "date: " + body.getDate();
         }
+
         if (body.getTime() != null && !body.getTime().equals(appointmentRecord.getTime())) {
             appointmentRecord.setTime(body.getTime());
-            logForUpdatedData += "time: " + body.getTime() + "}";
+
+
+            if (logForUpdatedData.contains("date:")) {
+
+                logForUpdatedData += ", " ;
+            }
+
+            logForUpdatedData += "time: " + body.getTime();
         }
 
         repository.save(appointmentRecord);
 
-        log.info(logForUpdatedData);
+        log.info(logForUpdatedData + "}");
 
         return mapper.entityToPutResponseDTO(appointmentRecord);
     }

@@ -1,4 +1,4 @@
-package com.hosp.med.voll.handler.exception;
+package com.hosp.med.voll.domain.model.exception;
 
 import lombok.Getter;
 

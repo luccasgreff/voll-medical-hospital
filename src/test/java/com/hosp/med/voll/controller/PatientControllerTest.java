@@ -2,7 +2,7 @@ package com.hosp.med.voll.controller;
 
 import com.hosp.med.voll.domain.model.PatientEntity;
 import com.hosp.med.voll.domain.model.dto.*;
-import com.hosp.med.voll.handler.exception.UnactiveException;
+import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.repository.PatientRepository;
 import com.hosp.med.voll.service.PatientService;

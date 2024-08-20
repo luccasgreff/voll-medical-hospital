@@ -2,7 +2,7 @@ package com.hosp.med.voll.handler;
 
 import com.hosp.med.voll.domain.model.dto.BeanValidationErrorDTO;
 import com.hosp.med.voll.domain.model.dto.ErrorDTO;
-import com.hosp.med.voll.handler.exception.UnactiveException;
+import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;

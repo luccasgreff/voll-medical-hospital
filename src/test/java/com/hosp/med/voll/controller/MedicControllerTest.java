@@ -3,7 +3,7 @@ package com.hosp.med.voll.controller;
 import com.hosp.med.voll.domain.enums.SpecialtysEnum;
 import com.hosp.med.voll.domain.model.MedicEntity;
 import com.hosp.med.voll.domain.model.dto.*;
-import com.hosp.med.voll.handler.exception.UnactiveException;
+import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.repository.MedicRepository;
 import com.hosp.med.voll.service.MedicService;

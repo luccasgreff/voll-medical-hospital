@@ -2,7 +2,7 @@ package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.PatientEntity;
 import com.hosp.med.voll.domain.model.dto.*;
-import com.hosp.med.voll.handler.exception.UnactiveException;
+import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.mapper.PatientMapper;;
 import com.hosp.med.voll.repository.PatientRepository;
@@ -70,18 +70,33 @@ public class PatientService {
             patientRecord.setName(body.getName());
             logForUpdatedData += "name: " + body.getName();
         }
+
         if (body.getPhone() != null && !body.getPhone().equals(patientRecord.getPhone())) {
             patientRecord.setPhone(body.getPhone());
-            logForUpdatedData += ", phone: " + body.getPhone();
-        }
+
+                if (logForUpdatedData.contains("name")) {
+
+                    logForUpdatedData += ", ";
+                }
+
+                logForUpdatedData += "phone: " + body.getPhone();
+            }
+
         if (body.getAddress() != null) {
             patientRecord.setAddress(addressMapper.addressDtoToModel(body.getAddress()));
-            logForUpdatedData += ", address: ****}";
+
+
+            if (logForUpdatedData.contains("name") || logForUpdatedData.contains("phone")) {
+
+                logForUpdatedData += ", ";
+            }
+
+            logForUpdatedData += "address: ****";
         }
 
         repository.save(patientRecord);
 
-        log.info(logForUpdatedData);
+        log.info(logForUpdatedData + "}");
 
         return mapper.entityToPutResponseDTO(patientRecord);
     }
