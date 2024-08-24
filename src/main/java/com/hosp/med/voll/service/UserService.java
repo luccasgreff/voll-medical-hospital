@@ -1,8 +1,8 @@
 package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.UserEntity;
-import com.hosp.med.voll.domain.model.dto.LoginDTO;
-import com.hosp.med.voll.domain.model.dto.LoginResponseDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.LoginDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.LoginResponseDTO;
 import com.hosp.med.voll.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

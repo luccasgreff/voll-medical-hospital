@@ -1,11 +1,13 @@
 package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.MedicEntity;
-import com.hosp.med.voll.domain.model.dto.*;
+import com.hosp.med.voll.domain.model.dto.medic.*;
 import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.mapper.AddressMapper;
 import com.hosp.med.voll.mapper.MedicMapper;
 import com.hosp.med.voll.repository.MedicRepository;
+import com.hosp.med.voll.util.LogUtils;
+import com.hosp.med.voll.util.ServiceUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,46 +61,25 @@ public class MedicService {
 
         var medicRecord = repository.getReferenceById(body.getId());
 
-        if (medicRecord.getActive() == false) {
-            log.error("Unable to update medic record, because It's unactive");
-            throw new UnactiveException();
-        }
+        ServiceUtils.isUnactive(medicRecord.getActive());
 
-        String logForUpdatedData = "Medic data updated: {";
+        String updatedDataLog = LogUtils.buildMedicUpdatedDataLog(body, medicRecord);
 
-        if (body.getName() != null && !body.getName().equals(medicRecord.getName())) {
+        if (!StringUtils.isBlank(body.getName()) && !body.getName().equals(medicRecord.getName())) {
             medicRecord.setName(body.getName());
-            logForUpdatedData += "name: " + body.getName();
         }
 
-        if (body.getPhone() != null && !body.getPhone().equals(medicRecord.getPhone())) {
+        if (!StringUtils.isBlank(body.getPhone()) && !body.getPhone().equals(medicRecord.getPhone())) {
             medicRecord.setPhone(body.getPhone());
-
-
-            if (logForUpdatedData.contains("name")) {
-
-                logForUpdatedData += ", ";
-            }
-
-            logForUpdatedData += "phone: " + body.getPhone();
-
         }
 
         if (body.getAddress() != null) {
             medicRecord.setAddress(addressMapper.addressDtoToModel(body.getAddress()));
-
-
-            if (logForUpdatedData.contains("name") || logForUpdatedData.contains("phone")) {
-
-                logForUpdatedData += ", ";
-            }
-
-            logForUpdatedData += "address: ****";
         }
 
-        repository.save(medicRecord);
+        log.info(updatedDataLog);
 
-        log.info(logForUpdatedData + "}");
+        repository.save(medicRecord);
 
         return mapper.entityToPutResponseDTO(medicRecord);
     }

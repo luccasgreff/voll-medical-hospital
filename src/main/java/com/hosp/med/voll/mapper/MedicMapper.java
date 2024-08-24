@@ -1,15 +1,13 @@
 package com.hosp.med.voll.mapper;
 
 import com.hosp.med.voll.domain.model.MedicEntity;
-import com.hosp.med.voll.domain.model.dto.GetMedicDTO;
-import com.hosp.med.voll.domain.model.dto.SaveMedicDTO;
-import com.hosp.med.voll.domain.model.dto.SaveMedicResponseDTO;
-import com.hosp.med.voll.domain.model.dto.UpdateMedicResponseDTO;
+import com.hosp.med.voll.domain.model.dto.medic.GetMedicDTO;
+import com.hosp.med.voll.domain.model.dto.medic.SaveMedicDTO;
+import com.hosp.med.voll.domain.model.dto.medic.SaveMedicResponseDTO;
+import com.hosp.med.voll.domain.model.dto.medic.UpdateMedicResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
 
 @Mapper(componentModel = "spring")
 public interface MedicMapper {

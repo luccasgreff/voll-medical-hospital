@@ -1,4 +1,4 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.authentication;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;

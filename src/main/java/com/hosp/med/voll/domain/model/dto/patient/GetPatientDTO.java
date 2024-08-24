@@ -1,20 +1,19 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.patient;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdatePatientResponseDTO {
+@Builder
+public class GetPatientDTO {
 
     private Integer id;
-
     private String name;
-
-    private String phone;
-
-    private SaveAddressResponseDTO address;
+    private String email;
+    private String ssn;
 
 }

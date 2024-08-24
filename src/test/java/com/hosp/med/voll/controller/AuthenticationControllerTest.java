@@ -2,10 +2,10 @@ package com.hosp.med.voll.controller;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
-import com.hosp.med.voll.domain.model.dto.AuthenticationDTO;
-import com.hosp.med.voll.domain.model.dto.AuthenticationResponseDTO;
-import com.hosp.med.voll.domain.model.dto.LoginDTO;
-import com.hosp.med.voll.domain.model.dto.LoginResponseDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.AuthenticationDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.AuthenticationResponseDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.LoginDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.LoginResponseDTO;
 import com.hosp.med.voll.service.AuthenticationService;
 import com.hosp.med.voll.service.UserService;
 import org.junit.jupiter.api.Test;

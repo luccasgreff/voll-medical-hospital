@@ -1,6 +1,5 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.appointment;
 
-import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,16 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateMedicRequestDTO {
+public class UpdateAppointmentRequestDTO {
 
     @NotNull(message = "{field.null}")
     private Integer id;
 
-    private String name;
+    private String date;
 
-    private String phone;
-
-    @Valid
-    private SaveAddressDTO address;
+    private String time;
 
 }

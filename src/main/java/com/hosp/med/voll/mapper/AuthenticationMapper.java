@@ -1,9 +1,8 @@
 package com.hosp.med.voll.mapper;
 
-import com.hosp.med.voll.domain.model.dto.AuthenticationResponseDTO;
+import com.hosp.med.voll.domain.model.dto.authentication.AuthenticationResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface AuthenticationMapper {

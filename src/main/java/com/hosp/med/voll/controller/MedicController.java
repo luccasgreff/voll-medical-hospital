@@ -1,6 +1,6 @@
 package com.hosp.med.voll.controller;
 
-import com.hosp.med.voll.domain.model.dto.*;
+import com.hosp.med.voll.domain.model.dto.medic.*;
 import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.service.MedicService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;

@@ -1,9 +1,8 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.patient;
 
-import com.hosp.med.voll.domain.enums.SpecialtysEnum;
+import com.hosp.med.voll.domain.model.dto.address.SaveAddressResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
@@ -11,16 +10,17 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "id")
-public class SaveMedicResponseDTO {
+public class SavePatientResponseDTO {
 
     private Integer id;
-    private String name;
-    private String email;
-    private String phone;
-    private String crm;
 
-    private SpecialtysEnum specialty;
+    private String name;
+
+    private String email;
+
+    private String phone;
+
+    private String ssn;
 
     private SaveAddressResponseDTO address;
 

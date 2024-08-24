@@ -1,7 +1,6 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.medic;
 
 import com.hosp.med.voll.domain.enums.SpecialtysEnum;
-import com.hosp.med.voll.domain.model.MedicEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

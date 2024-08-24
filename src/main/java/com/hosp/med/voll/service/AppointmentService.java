@@ -1,10 +1,12 @@
 package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.AppointmentEntity;
-import com.hosp.med.voll.domain.model.dto.*;
+import com.hosp.med.voll.domain.model.dto.appointment.*;
 import com.hosp.med.voll.mapper.AppointmentMapper;
 import com.hosp.med.voll.repository.AppointmentRepository;
+import com.hosp.med.voll.util.LogUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -54,29 +56,19 @@ public class AppointmentService {
 
         var appointmentRecord = repository.getReferenceById(body.getId());
 
-        String logForUpdatedData = "Appointment data updated: {";
+        String updatedDataLog = LogUtils.buildAppointmentUpdatedDataLog(body, appointmentRecord);
 
-        if (body.getDate() != null && !body.getDate().equals(appointmentRecord.getDate())) {
+        if (!StringUtils.isBlank(body.getDate()) && !body.getDate().equals(appointmentRecord.getDate())) {
             appointmentRecord.setDate(body.getDate());
-
-            logForUpdatedData += "date: " + body.getDate();
         }
 
-        if (body.getTime() != null && !body.getTime().equals(appointmentRecord.getTime())) {
+        if (!StringUtils.isBlank(body.getTime()) && !body.getTime().equals(appointmentRecord.getTime())) {
             appointmentRecord.setTime(body.getTime());
-
-
-            if (logForUpdatedData.contains("date:")) {
-
-                logForUpdatedData += ", " ;
-            }
-
-            logForUpdatedData += "time: " + body.getTime();
         }
+
+        log.info(updatedDataLog);
 
         repository.save(appointmentRecord);
-
-        log.info(logForUpdatedData + "}");
 
         return mapper.entityToPutResponseDTO(appointmentRecord);
     }

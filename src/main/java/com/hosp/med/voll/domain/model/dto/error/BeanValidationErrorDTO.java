@@ -1,4 +1,4 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ErrorDTO {
+@Builder
+public class BeanValidationErrorDTO {
+
+    private String field;
 
     private String message;
 

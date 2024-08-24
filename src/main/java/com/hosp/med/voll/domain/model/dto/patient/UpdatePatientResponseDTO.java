@@ -1,5 +1,6 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.patient;
 
+import com.hosp.med.voll.domain.model.dto.address.SaveAddressResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -7,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class UpdateMedicResponseDTO {
+public class UpdatePatientResponseDTO {
 
     private Integer id;
 
