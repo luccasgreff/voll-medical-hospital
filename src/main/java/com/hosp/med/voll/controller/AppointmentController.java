@@ -1,6 +1,6 @@
 package com.hosp.med.voll.controller;
 
-import com.hosp.med.voll.domain.model.dto.*;
+import com.hosp.med.voll.domain.model.dto.appointment.*;
 import com.hosp.med.voll.service.AppointmentService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.transaction.Transactional;

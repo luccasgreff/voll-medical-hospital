@@ -1,15 +1,12 @@
 package com.hosp.med.voll.mapper;
 
 import com.hosp.med.voll.domain.model.AppointmentEntity;
-import com.hosp.med.voll.domain.model.dto.GetAppointmentDTO;
-import com.hosp.med.voll.domain.model.dto.SaveAppointmentDTO;
-import com.hosp.med.voll.domain.model.dto.SaveAppointmentResponseDTO;
-import com.hosp.med.voll.domain.model.dto.UpdateAppointmentResponseDTO;
+import com.hosp.med.voll.domain.model.dto.appointment.GetAppointmentDTO;
+import com.hosp.med.voll.domain.model.dto.appointment.SaveAppointmentDTO;
+import com.hosp.med.voll.domain.model.dto.appointment.SaveAppointmentResponseDTO;
+import com.hosp.med.voll.domain.model.dto.appointment.UpdateAppointmentResponseDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.stereotype.Component;
 
 @Mapper(componentModel = "spring")
 public interface AppointmentMapper {

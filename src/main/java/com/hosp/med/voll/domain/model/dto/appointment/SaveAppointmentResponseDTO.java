@@ -1,4 +1,4 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.appointment;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,24 +9,22 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SavePatientResponseDTO {
+public class SaveAppointmentResponseDTO {
 
     private Integer id;
 
-    private String name;
+    private String patient;
 
-    private String email;
+    private String medic;
 
-    private String phone;
+    private String date;
 
-    private String ssn;
-
-    private SaveAddressResponseDTO address;
-
-    private Boolean active;
+    private String time;
 
     private LocalDateTime createdAt;
 
     private LocalDateTime modifiedAt;
+
+
 
 }

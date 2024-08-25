@@ -1,7 +1,7 @@
 package com.hosp.med.voll.domain.model;
 
 import com.hosp.med.voll.domain.enums.SpecialtysEnum;
-import com.hosp.med.voll.domain.model.dto.SaveAddressModel;
+import com.hosp.med.voll.domain.model.dto.address.SaveAddressModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;

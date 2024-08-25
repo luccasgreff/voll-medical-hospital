@@ -1,10 +1,9 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.medic;
 
+import com.hosp.med.voll.domain.enums.SpecialtysEnum;
+import com.hosp.med.voll.domain.model.dto.address.SaveAddressDTO;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SavePatientDTO {
+public class SaveMedicDTO {
 
     @NotBlank(message = "{field.blank}")
     private String name;
@@ -26,8 +25,11 @@ public class SavePatientDTO {
     private String phone;
 
     @NotBlank(message = "{field.blank}")
-    @Pattern(regexp = "([0-9]{3}\\.?[0-9]{3}\\.?[0-9]{3}[/]?[0-9]{2})|([0-9]{3}[-]?[0-9]{2}[-]?[0-9]{4})", message = "{field.pattern}")
-    private String ssn;
+    @Size(max = 6, message = "{field.size}")
+    private String crm;
+
+    @NotNull(message = "{field.null}")
+    private SpecialtysEnum specialty;
 
     @NotNull(message = "{field.null}")
     @Valid

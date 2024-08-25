@@ -1,16 +1,21 @@
 package com.hosp.med.voll.service;
 
 import com.hosp.med.voll.domain.model.PatientEntity;
-import com.hosp.med.voll.domain.model.dto.*;
+import com.hosp.med.voll.domain.model.dto.patient.*;
 import com.hosp.med.voll.domain.model.exception.UnactiveException;
 import com.hosp.med.voll.mapper.AddressMapper;
-import com.hosp.med.voll.mapper.PatientMapper;;
+import com.hosp.med.voll.mapper.PatientMapper;
 import com.hosp.med.voll.repository.PatientRepository;
+import com.hosp.med.voll.util.LogUtils;
+import com.hosp.med.voll.util.ServiceUtils;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+;
 
 @Service
 @Slf4j
@@ -59,47 +64,29 @@ public class PatientService {
 
         var patientRecord = repository.getReferenceById(body.getId());
 
-        if (patientRecord.getActive() == false) {
-            log.error("Unable to update patient record, because It's unactive");
-            throw new UnactiveException();
-        }
+        ServiceUtils.isUnactive(patientRecord.getActive());
 
-        String logForUpdatedData = "Patient data updated: {";
+        String updatedDataLog = LogUtils.buildPatientUpdatedDataLog(body, patientRecord);
 
-        if (body.getName() != null && !body.getName().equals(patientRecord.getName())) {
+        if (!StringUtils.isBlank(body.getName()) && !body.getName().equals(patientRecord.getName())) {
             patientRecord.setName(body.getName());
-            logForUpdatedData += "name: " + body.getName();
         }
 
-        if (body.getPhone() != null && !body.getPhone().equals(patientRecord.getPhone())) {
+        if (!StringUtils.isBlank(body.getPhone()) && !body.getPhone().equals(patientRecord.getPhone())) {
             patientRecord.setPhone(body.getPhone());
-
-                if (logForUpdatedData.contains("name")) {
-
-                    logForUpdatedData += ", ";
-                }
-
-                logForUpdatedData += "phone: " + body.getPhone();
-            }
+        }
 
         if (body.getAddress() != null) {
             patientRecord.setAddress(addressMapper.addressDtoToModel(body.getAddress()));
-
-
-            if (logForUpdatedData.contains("name") || logForUpdatedData.contains("phone")) {
-
-                logForUpdatedData += ", ";
-            }
-
-            logForUpdatedData += "address: ****";
         }
+
+        log.info(updatedDataLog);
 
         repository.save(patientRecord);
 
-        log.info(logForUpdatedData + "}");
-
         return mapper.entityToPutResponseDTO(patientRecord);
     }
+
     public void deletePatient(Integer id) {
         var patient = repository.getReferenceById(id);
         patient.setActive(false);

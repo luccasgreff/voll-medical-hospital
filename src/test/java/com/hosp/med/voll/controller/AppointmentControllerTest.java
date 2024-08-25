@@ -1,6 +1,6 @@
 package com.hosp.med.voll.controller;
 
-import com.hosp.med.voll.domain.model.dto.*;
+import com.hosp.med.voll.domain.model.dto.appointment.*;
 import com.hosp.med.voll.repository.AppointmentRepository;
 import com.hosp.med.voll.service.AppointmentService;
 import org.junit.jupiter.api.Test;

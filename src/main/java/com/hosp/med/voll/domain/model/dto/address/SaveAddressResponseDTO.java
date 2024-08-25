@@ -1,4 +1,4 @@
-package com.hosp.med.voll.domain.model.dto;
+package com.hosp.med.voll.domain.model.dto.address;
 
 import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
@@ -9,16 +9,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class SaveAddressModel {
+public class SaveAddressResponseDTO {
 
     private String street;
     private String district;
-    private String zip_code;
+    private String zipCode;
     private String city;
     private String state;
     private String number;
     private String complement;
-
 
 }
 
