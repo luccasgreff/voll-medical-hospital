@@ -8,8 +8,10 @@ import com.hosp.med.voll.domain.model.dto.medic.UpdateMedicRequestDTO;
 import com.hosp.med.voll.domain.model.dto.patient.UpdatePatientRequestDTO;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.validation.FieldError;
 
 import java.util.HashMap;
+import java.util.List;
 
 @Slf4j
 public class LogUtils {
@@ -74,6 +76,25 @@ public class LogUtils {
     private static String formatUpdatedDataLog(String updatedDataToBeFormatted) {
 
         return updatedDataToBeFormatted.replace("=", ": ");
+    }
+
+
+    public static String buildBeanValidationErrorLog(List<FieldError> errors) {
+
+        String invalidFieldsToBeFormatted = errors.stream().map(FieldError::getField).toList().toString();
+
+        String invalidFieldsLog = formatBeanValidationErrorLog(invalidFieldsToBeFormatted);
+
+        return invalidFieldsLog;
+    }
+
+    private static String formatBeanValidationErrorLog(String invalidFieldsToBeFormatted) {
+
+        String formattedInvalidFieldsLog = invalidFieldsToBeFormatted
+                .replace("[", "{")
+                .replace("]", "}");
+
+        return formattedInvalidFieldsLog;
     }
 
 }

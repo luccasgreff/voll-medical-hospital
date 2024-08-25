@@ -16,7 +16,7 @@ public class SaveMedicDTO {
     @NotBlank(message = "{field.blank}")
     private String name;
 
-    @NotBlank(message = "{field.null}")
+    @NotBlank(message = "{field.blank}")
     @Email(message = "{field.email}")
     private String email;
 

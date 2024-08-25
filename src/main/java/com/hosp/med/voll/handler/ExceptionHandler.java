@@ -12,7 +12,10 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.util.ArrayList;
+import java.util.List;
+
+import static com.hosp.med.voll.util.ErrorUtils.buildBeanValidationErrorResponse;
+import static com.hosp.med.voll.util.LogUtils.buildBeanValidationErrorLog;
 
 @RestControllerAdvice
 @Slf4j
@@ -40,27 +43,11 @@ public class ExceptionHandler {
     public ResponseEntity handleBadRequest(MethodArgumentNotValidException exception) {
 
         var errors = exception.getFieldErrors();
-        ArrayList<BeanValidationErrorDTO> response = new ArrayList<BeanValidationErrorDTO>();
 
-        StringBuilder fieldErrorsForLog = new StringBuilder();
-        fieldErrorsForLog.append("{");
+        List<BeanValidationErrorDTO> response = buildBeanValidationErrorResponse(errors);
 
-        for (var error : errors) {
+        log.error("Bad Request due to: {}", buildBeanValidationErrorLog(errors));
 
-            response.add(BeanValidationErrorDTO.builder()
-                    .field(error.getField())
-                    .message(error.getDefaultMessage()).build());
-
-            fieldErrorsForLog.append(error.getField());
-
-            if (errors.size() != response.size()) {
-                fieldErrorsForLog.append(", ");
-            } else {
-                fieldErrorsForLog.append("}");
-            }
-        }
-
-        log.error("Bad Request due to: {}", fieldErrorsForLog);
         return ResponseEntity.badRequest().body(response);
     }
 
